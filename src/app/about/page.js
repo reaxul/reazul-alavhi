@@ -29,7 +29,7 @@ export default function AboutPage() {
           className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl ring-4 ring-indigo-500 dark:ring-indigo-400"
         >
           <Image
-            src="/reazul.png"
+            src="/Reazul.png"
             alt="Reazul Alavhi"
             width={400}
             height={400}

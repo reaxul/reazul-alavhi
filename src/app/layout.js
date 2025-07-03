@@ -54,7 +54,10 @@ export const metadata = {
   icons: {
     icon: "/logo (2).jpeg",
   },
-  metadataBase: new URL("https://your-portfolio-domain.com"),
+  metadataBase: new URL("https://reazul-alavhi.vercel.app"),
+   other: {
+    "google-site-verification": "YNA0IzE2JZWp3j3OGzceqiJYNKhy22PGPNIIclXnDmU",
+  },
 };
 
 export default function RootLayout({ children }) {

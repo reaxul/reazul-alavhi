@@ -14,7 +14,7 @@ const projectsData = [
       "A dynamic restaurant ordering platform with real-time order management, item availability toggle, admin dashboard, and seamless user experience.",
     githubLink: "https://github.com/reaxul/nyb-restarant2.0",
     liveLink: "https://nyb-restaurant-nu.vercel.app/",
-    imageSrc: "/project1.jpg",
+    imageSrc: "/project1.png",
     altText: "NYB Restaurant Project",
   },
   {
@@ -23,7 +23,7 @@ const projectsData = [
       "TastyDrop is a full-stack food delivery web app featuring dynamic menus, order tracking, user authentication, and admin panels.",
     githubLink: "https://github.com/BakiAbdullah/Tasty-drop-client.git",
     liveLink: "https://tasty-drops.web.app/",
-    imageSrc: "/project2.jpg",
+    imageSrc: "/project2.png",
     altText: "Tasty Drop Project",
   },
   {
@@ -32,7 +32,7 @@ const projectsData = [
       "A superhero-themed eCommerce platform for toy collectors. Includes user reviews, detailed product pages, and secure checkout.",
     githubLink: "https://github.com/reaxul/toy-legend-client.git",
     liveLink: "https://toy-legends.web.app/",
-    imageSrc: "/project3.jpg",
+    imageSrc: "/project3.png",
     altText: "Toy Legend Project",
   },
 ];
@@ -68,6 +68,8 @@ export default function ProjectsPage() {
                     alt={project.altText}
                     width={600}
                     height={300}
+                    placeholder="blur"
+                    blurDataURL={project.imageSrc}
                     className="object-cover w-full h-full"
                   />
                 </div>
