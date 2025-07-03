@@ -9,7 +9,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -22,70 +21,62 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-zinc-800"
-      role="banner"
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 text-transparent bg-clip-text"
-          aria-label="Reazul Alavhi Home"
-        >
-          Reazul Alavhi
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium" role="navigation" aria-label="Primary Navigation">
+    <header className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full px-4">
+      <div className="flex items-center justify-between max-w-4xl mx-auto">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex justify-center gap-4 px-6 py-2 bg-zinc-900/50 backdrop-blur-sm border border-zinc-700 rounded-full shadow-lg w-max mx-auto transition-all duration-300">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`transition hover:text-indigo-600 dark:hover:text-indigo-400 ${
+              className={`relative px-3 py-1.5 text-sm font-semibold transition-colors ${
                 pathname === item.href
-                  ? "text-indigo-600 dark:text-indigo-400 font-semibold"
-                  : "text-gray-700 dark:text-gray-300"
+                  ? "text-white"
+                  : "text-gray-400 hover:text-white"
               }`}
             >
+              {pathname === item.href && (
+                <span className="absolute inset-x-0 -bottom-1 h-1 rounded-full bg-purple-500 transition-all duration-300" />
+              )}
               {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Toggle */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 rounded-md bg-zinc-900/50 backdrop-blur-md border border-zinc-700 text-white shadow-lg transition"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <nav
-          className="md:hidden px-4 pb-4 pt-1 space-y-2 bg-white dark:bg-zinc-900"
-          role="navigation"
-          aria-label="Mobile Navigation"
-        >
+      {/* Mobile Menu (slide down with blur) */}
+      <div
+        className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+          isOpen ? "max-h-96 mt-3" : "max-h-0"
+        }`}
+      >
+        <div className="md:hidden px-4 py-3 bg-zinc-900/50 backdrop-blur-md border border-zinc-700 rounded-xl shadow-lg space-y-2">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`block py-2 px-2 rounded transition hover:text-indigo-600 dark:hover:text-indigo-400 ${
+              className={`block text-sm font-semibold px-3 py-2 rounded-md transition-all duration-200 ${
                 pathname === item.href
-                  ? "text-indigo-600 dark:text-indigo-400 font-semibold"
-                  : "text-gray-700 dark:text-gray-300"
+                  ? "text-white bg-purple-600/20"
+                  : "text-gray-400 hover:text-white hover:bg-zinc-800"
               }`}
             >
               {item.label}
             </Link>
           ))}
-        </nav>
-      )}
+        </div>
+      </div>
     </header>
   );
 }

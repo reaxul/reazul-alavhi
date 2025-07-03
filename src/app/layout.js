@@ -1,16 +1,11 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./globals.css";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata = {
@@ -36,7 +31,7 @@ export const metadata = {
     siteName: "Reazul Alavhi Portfolio",
     images: [
       {
-        url: "/Reazul.png", // Just use relative path inside `public/`
+        url: "/Reazul.png",
         width: 1200,
         height: 630,
         alt: "Reazul Alavhi Portfolio Preview",
@@ -55,18 +50,14 @@ export const metadata = {
     icon: "/logo (2).jpeg",
   },
   metadataBase: new URL("https://reazul-alavhi.vercel.app"),
-   other: {
+  other: {
     "google-site-verification": "YNA0IzE2JZWp3j3OGzceqiJYNKhy22PGPNIIclXnDmU",
   },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      dir="ltr"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
+    <html lang="en" dir="ltr" className={inter.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0f172a" />
