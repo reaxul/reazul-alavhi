@@ -9,7 +9,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="mt-20 border-t border-zinc-800 py-8 px-4 text-center text-sm text-gray-400 bg-black">
+    <footer className="border-t border-zinc-800 py-8 px-4 text-center text-sm text-gray-400 bg-black">
       <div className="mb-4 flex justify-center gap-6">
         <a
           href="https://github.com/reaxul"

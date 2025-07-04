@@ -48,6 +48,7 @@ export default function HomePage() {
         <meta property="og:image" content="/reazul.png" />
         <meta property="og:url" content="https://yourdomain.com" />
         <meta name="keywords" content="Reazul Alavhi, Full Stack Developer, Next.js Developer, React Developer, Web Developer Bangladesh" />
+        <meta name="google-site-verification" content="YNA0IzE2JZWp3j3OGzceqiJYNKhy22PGPNIIclXnDmU" />
         <meta name="author" content="Reazul Alavhi" />
       </Head>
 

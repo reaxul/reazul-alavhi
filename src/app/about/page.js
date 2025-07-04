@@ -7,7 +7,7 @@ import { MdTravelExplore } from "react-icons/md";
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white to-slate-100 dark:from-zinc-950 dark:to-zinc-900 px-4 py-24 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br from-white to-slate-100 dark:from-zinc-950 dark:to-zinc-900 px-4 py-36 relative overflow-hidden">
       {/* Decorative Background Animation */}
       <motion.div
         className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-indigo-500 opacity-10 rounded-full"

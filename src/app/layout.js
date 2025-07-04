@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-white text-neutral-900 antialiased dark:bg-zinc-900 dark:text-white">
         <Navbar />
-        <main className="pt-20">{children}</main>
+        <main >{children}</main>
         <Footer />
       </body>
     </html>
