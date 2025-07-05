@@ -51,7 +51,7 @@ export const metadata = {
   },
   metadataBase: new URL("https://reazul-alavhi.vercel.app"),
   other: {
-    "google-site-verification": "YNA0IzE2JZWp3j3OGzceqiJYNKhy22PGPNIIclXnDmU",
+    "google-site-verification": "P_CyrF1y1pMLhHK7fzOiYiZoH3eW7D2kaCiHMswFdAw",
   },
 };
 
