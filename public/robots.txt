@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://reazul-alavhi.vercel.app
+
+# Sitemaps
+Sitemap: https://reazul-alavhi.vercel.app/sitemap.xml

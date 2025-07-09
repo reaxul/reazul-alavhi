@@ -112,7 +112,7 @@ export default function ContactPage() {
 
         <div className="mt-8 flex justify-center gap-6 text-2xl text-zinc-700 dark:text-zinc-300">
           <a
-            href="mailto:your@email.com"
+            href="mailto:reazul.alavhi@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition"
@@ -120,7 +120,7 @@ export default function ContactPage() {
             <FaEnvelope />
           </a>
           <a
-            href="https://github.com/yourgithub"
+            href="https://github.com/reaxul"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-indigo-500 transition"
@@ -128,7 +128,7 @@ export default function ContactPage() {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/yourlinkedin"
+            href="https://linkedin.com/in/reazul-alavhi"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition"
