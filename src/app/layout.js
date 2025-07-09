@@ -1,7 +1,8 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Script from "next/script"; // ✅ import this
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,7 +48,7 @@ export const metadata = {
     images: ["/og-image.png"],
   },
   icons: {
-    icon: "/logo (2).jpeg",
+    icon: "/favicon1.png",
   },
   metadataBase: new URL("https://reazul-alavhi.vercel.app"),
   other: {
@@ -62,9 +63,24 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0f172a" />
       </head>
+
+      {/* ✅ Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LCW9VWYYEV"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LCW9VWYYEV');
+        `}
+      </Script>
+
       <body className="bg-white text-neutral-900 antialiased dark:bg-zinc-900 dark:text-white">
         <Navbar />
-        <main >{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

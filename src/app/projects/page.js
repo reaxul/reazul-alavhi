@@ -11,29 +11,29 @@ const projectsData = [
   {
     title: "Smart Dine",
     description:
-      "A dynamic restaurant ordering platform with real-time order management, item availability toggle, admin dashboard, and seamless user experience.",
+      "A dynamic restaurant ordering platform with live menu updates, real-time order management, availability toggles, and a full admin dashboard.",
     githubLink: "https://github.com/reaxul/nyb-restarant2.0",
     liveLink: "https://nyb-restaurant-nu.vercel.app/",
     imageSrc: "/project1.png",
-    altText: "NYB Restaurant Project",
+    altText: "Smart Dine project preview",
   },
   {
     title: "Tasty Drop",
     description:
-      "TastyDrop is a full-stack food delivery web app featuring dynamic menus, order tracking, user authentication, and admin panels.",
+      "A modern food delivery web app featuring secure authentication, dynamic menus, user-friendly design, and a responsive admin dashboard.",
     githubLink: "https://github.com/BakiAbdullah/Tasty-drop-client.git",
     liveLink: "https://tasty-drops.web.app/",
     imageSrc: "/project2.png",
-    altText: "Tasty Drop Project",
+    altText: "Tasty Drop delivery project preview",
   },
   {
-    title: "Toy Legend",
+    title: "Digital Spa Ads",
     description:
-      "A superhero-themed eCommerce platform for toy collectors. Includes user reviews, detailed product pages, and secure checkout.",
+      "A Google Ads marketing project to promote a spa and massage center — delivering 25.6K impressions, 1.59K clicks, and a $0.08 CPC. Full campaign analytics and ad strategy execution included.",
     githubLink: "https://github.com/reaxul/toy-legend-client.git",
-    liveLink: "https://toy-legends.web.app/",
+    liveLink: "https://poetic-brigadeiros-426660.netlify.app/",
     imageSrc: "/project3.png",
-    altText: "Toy Legend Project",
+    altText: "Spa marketing campaign results",
   },
 ];
 
@@ -56,13 +56,13 @@ export default function ProjectsPage() {
           {projectsData.map((project, i) => (
             <div
               key={i}
-              className="bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border border-gray-200 dark:border-zinc-700 overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white dark:bg-zinc-800 rounded-2xl shadow-md border border-gray-200 dark:border-zinc-700 overflow-hidden group transition-all duration-300 hover:shadow-2xl"
               data-aos="fade-up"
               data-aos-delay={i * 100}
             >
-              {/* Image scroll effect on hover */}
+              {/* Image Section */}
               <div className="relative h-52 overflow-hidden">
-                <div className="absolute inset-0 transition-transform duration-[5000ms] group-hover:-translate-y-1/5">
+                <div className="absolute inset-0 transform transition-transform duration-[5000ms] group-hover:-translate-y-1/5">
                   <Image
                     src={project.imageSrc}
                     alt={project.altText}
@@ -76,9 +76,9 @@ export default function ProjectsPage() {
               </div>
 
               {/* Content */}
-              <div className="p-5 flex flex-col justify-between h-[230px]">
+              <div className="p-5 flex flex-col justify-between h-[250px]">
                 <div>
-                  <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
                     {project.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
