@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Banner from "../../sections/Banner";
 import Skills from "../../sections/skills";
-
+import Contact from "../../sections/Contact"
 
 export default function HomePage() {
 
@@ -31,6 +31,7 @@ export default function HomePage() {
 
         <Banner />
         <Skills />
+        <Contact />
       </main>
     </>
   );
