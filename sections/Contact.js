@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -18,6 +20,7 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Sending...");
+    setLoading(true);
 
     try {
       const res = await fetch("https://formspree.io/f/myzjqrjg", {
@@ -35,13 +38,14 @@ export default function ContactPage() {
         setFormData({ name: "", email: "", message: "" });
       } else {
         toast.error("Failed to send message.", { id: toastId });
-        console.error("Formspree error:", data);
       }
     } catch (err) {
       toast.error("Something went wrong.", { id: toastId });
-      console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
+
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-white to-slate-100 dark:from-zinc-950 dark:to-zinc-900 px-4 py-36">
@@ -104,10 +108,35 @@ export default function ContactPage() {
           <motion.button
             type="submit"
             whileTap={{ scale: 0.96 }}
-            className="w-full py-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold rounded-xl transition"
+            disabled={loading}
+            className={`w-full py-3 flex items-center justify-center gap-2 ${loading ? "opacity-70 cursor-not-allowed" : ""
+              } bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-semibold rounded-xl transition`}
           >
-            Send Message
+            {loading && (
+              <svg
+                className="w-5 h-5 animate-spin text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                ></path>
+              </svg>
+            )}
+            {loading ? "Sending..." : "Send Message"}
           </motion.button>
+
         </motion.form>
 
         <div className="mt-8 flex justify-center gap-6 text-2xl text-zinc-700 dark:text-zinc-300">

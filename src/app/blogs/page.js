@@ -2,12 +2,13 @@
 
 import useSWR from "swr";
 import Head from "next/head";
+import { motion } from "framer-motion";
 
-const fetcher = url => fetch(url).then(res => res.json());
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function BlogPage() {
   const { data, error } = useSWR("/api/medium", fetcher);
-  console.log(data?.items);
+
   return (
     <>
       <Head>
@@ -20,20 +21,30 @@ export default function BlogPage() {
             Blog & Articles
           </h1>
 
+          {/* Error */}
           {error && (
             <p className="text-red-500 text-center">Failed to load posts.</p>
           )}
 
+          {/* Loading Spinner */}
           {!data && !error && (
-            <p className="text-center text-gray-400">Loading...</p>
+            <div className="flex flex-col items-center justify-center mt-12">
+              <div className="w-10 h-10 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+              <p className="mt-4 text-gray-400">Loading posts...</p>
+            </div>
           )}
 
+          {/* Blog Posts */}
           {data?.items && data.items.length > 0 ? (
-            <ul className="space-y-8">
-              {data.items.map((post) => (
-                <li
+            <ul className="space-y-10">
+              {data.items.map((post, index) => (
+                <motion.li
                   key={post.link}
-                  className="bg-zinc-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition"
+                  className="bg-zinc-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
                 >
                   <a
                     href={post.link}
@@ -67,12 +78,16 @@ export default function BlogPage() {
                       Read full article →
                     </a>
                   </div>
-                </li>
+                </motion.li>
               ))}
             </ul>
-
           ) : (
-            !error && <p className="text-center text-gray-400">No posts found.</p>
+            data && (
+              <div className="text-center mt-12 text-gray-400">
+                <p className="text-lg">🚫 No blog posts found at the moment.</p>
+                <p className="text-sm mt-1">Please check back later.</p>
+              </div>
+            )
           )}
         </div>
       </section>
