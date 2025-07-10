@@ -62,6 +62,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0f172a" />
+
       </head>
 
       {/* ✅ Google Analytics */}
@@ -77,6 +78,41 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-LCW9VWYYEV');
         `}
       </Script>
+
+      {/* ✅ Chatbase AI Assistant */}
+      <Script id="chatbase-init" strategy="afterInteractive">
+        {`
+    (function(){
+      if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+        window.chatbase = (...arguments) => {
+          if(!window.chatbase.q){ window.chatbase.q = [] }
+          window.chatbase.q.push(arguments)
+        };
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop) {
+            if (prop === "q") return target.q;
+            return (...args) => target(prop, ...args);
+          }
+        });
+      }
+
+      const onLoad = function(){
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "tuj9VPZlTJFR-xJcCFvw9";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script);
+      };
+
+      if(document.readyState === "complete") {
+        onLoad();
+      } else {
+        window.addEventListener("load", onLoad);
+      }
+    })();
+  `}
+      </Script>
+
 
       <body className="bg-white text-neutral-900 antialiased dark:bg-zinc-900 dark:text-white">
         <Navbar />

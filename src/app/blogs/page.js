@@ -2,7 +2,6 @@
 
 import useSWR from "swr";
 import Head from "next/head";
-import { motion } from "framer-motion";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -17,13 +16,13 @@ export default function BlogPage() {
 
       <section className="min-h-screen bg-gradient-to-b from-zinc-950 to-zinc-900 text-white py-24 px-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl font-extrabold mb-10 text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-extrabold mb-12 text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Blog & Articles
           </h1>
 
           {/* Error */}
           {error && (
-            <p className="text-red-500 text-center">Failed to load posts.</p>
+            <p className="text-red-500 text-center">⚠️ Failed to load posts.</p>
           )}
 
           {/* Loading Spinner */}
@@ -37,14 +36,10 @@ export default function BlogPage() {
           {/* Blog Posts */}
           {data?.items && data.items.length > 0 ? (
             <ul className="space-y-10">
-              {data.items.map((post, index) => (
-                <motion.li
+              {data.items.map((post) => (
+                <li
                   key={post.link}
-                  className="bg-zinc-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  className="bg-zinc-800/80 backdrop-blur-md p-6 rounded-xl border border-zinc-700 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:border-purple-900"
                 >
                   <a
                     href={post.link}
@@ -62,23 +57,23 @@ export default function BlogPage() {
                     — By {post.creator || "Unknown"}
                   </p>
 
-                  <p className="text-gray-300 mt-4">
+                  <p className="text-gray-300 mt-4 leading-relaxed">
                     {post["content:encodedSnippet"]
                       ? post["content:encodedSnippet"].slice(0, 300) + "..."
                       : "No preview available."}
                   </p>
 
-                  <div className="mt-3">
+                  <div className="mt-4">
                     <a
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block text-sm text-pink-400 hover:underline"
+                      className="inline-block text-sm text-pink-400 hover:text-pink-300 transition"
                     >
                       Read full article →
                     </a>
                   </div>
-                </motion.li>
+                </li>
               ))}
             </ul>
           ) : (
