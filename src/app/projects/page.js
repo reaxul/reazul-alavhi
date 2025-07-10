@@ -30,7 +30,7 @@ const projectsData = [
     title: "Digital Spa Ads",
     description:
       "A Google Ads marketing project to promote a spa and massage center — delivering 25.6K impressions, 1.59K clicks, and a $0.08 CPC. Full campaign analytics and ad strategy execution included.",
-    githubLink: "https://github.com/reaxul/toy-legend-client.git",
+    githubLink: "https://github.com/reaxul/Spa-Center",
     liveLink: "https://poetic-brigadeiros-426660.netlify.app/",
     imageSrc: "/project3.png",
     altText: "Spa marketing campaign results",
